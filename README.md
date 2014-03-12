@@ -3,7 +3,7 @@ Scripts
 
 Some useful scripts for quantum chemistry or molecular dynamics analysis.
 
-** Description of the scripts
+## Description of the scripts
 
 **find_residues**: from a netCDF trajectory and an AMBER topology, finds the number of
 residues which are at a given distance of another residue. For instance, it gives for 
