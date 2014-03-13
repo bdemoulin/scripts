@@ -11,6 +11,8 @@ each frame the number of water molecules around an organic chromophore. The resu
 normalized histogram. Uses [MDAnalysis toolkit](http://code.google.com/p/mdanalysis/) for 
 the analysis and [Prettyplotlib](http://olgabot.github.io/prettyplotlib/) for the plots.
 
+For an example (without plotting the result), see this [notebook](http://nbviewer.ipython.org/gist/bdemoulin/9528349).
+
 **find_energies.py**: from a MOLCAS *caspt2.output* file, extracts the excitation energies
 at RASSCF, CASPT2, and MS-CASPT2 levels. It returns a *csv* table, with the energies in eV 
 and in nm.
