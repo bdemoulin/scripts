@@ -24,6 +24,9 @@ radius = 4.0
 topology = 'topol.prmtop'
 intraj   = 'traj.ncdf'
 
+# Title for the file containing the hydration number
+file_title = "hydration_file"
+
 #Parameters for the plot
 title = "Hydration for all-free M10"
 title_of_file = "hydration_all-free_M10.png"
@@ -49,8 +52,8 @@ def plot_figure(title, title_of_file):
 
 ##########################################
 
-# Load a universe, i.e. an object that contains the topology and all the available
-# coordinates:
+# Load a universe, i.e. an object that contains the topology and all the
+# available coordinates:
 u = Universe(topology,intraj)
 
 # Where are the residues we are interested in in the Universe ?
@@ -58,11 +61,15 @@ center_in_file = u.selectAtoms(center)
 residue_in_file = u.selectAtoms(residue_to_find)
 
 # Now, we build an histogram
-#   - hydration_number_histogram_bin  contains the possible values for the hydration number
+#   - hydration_number_histogram_bin  contains the possible values for the
+#     hydration number.
 #   - hydration_number stores all the values along the trajectory
 histogram_bin = []
 hydration_number = np.array([])
 num_frame = 0
+
+# File where we write the hydration number
+hydration_file = open(file_title,"w")
 
 # On each frame, we find the residues around the center.
 # Then, append the array containing the number of residues aroud the center.
@@ -73,6 +80,7 @@ for ts in u.trajectory:
                                                        center_in_file, 
                                                        radius)
     hydration_number = np.append(hydration_number,[number_of_residues])
+    hydration_file.write("%d  %d" % (num_frame,number_of_residues))
     if number_of_residues not in histogram_bin:
         histogram_bin += [number_of_residues]
 
