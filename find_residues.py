@@ -80,7 +80,7 @@ for ts in u.trajectory:
                                                        center_in_file, 
                                                        radius)
     hydration_number = np.append(hydration_number,[number_of_residues])
-    hydration_file.write("%d  %d" % (num_frame,number_of_residues))
+    hydration_file.write("%d  %d\n" % (num_frame,number_of_residues))
     if number_of_residues not in histogram_bin:
         histogram_bin += [number_of_residues]
 
